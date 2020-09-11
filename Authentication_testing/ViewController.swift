@@ -14,9 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "There is nothing here displayed"
+        
+        var hiddenUponLocking = true
+        
+        func hideAway() {
+            
+        }
+        
         let notificationCenter = NotificationCenter.default
         //when the keyboard shows or hides we should be notified
-        
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
@@ -40,6 +47,10 @@ class ViewController: UIViewController {
         
         let selectedRange = hiddenTextEditor.selectedRange
         hiddenTextEditor.scrollRangeToVisible(selectedRange)
+    }
+    
+    func hideUponAuthentication() {
+        //write the func here
     }
 }
 
