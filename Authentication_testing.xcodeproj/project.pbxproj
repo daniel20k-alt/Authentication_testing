@@ -13,6 +13,8 @@
 		EE3F4F0C2509F7AC00D1C26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE3F4F0A2509F7AC00D1C26A /* Main.storyboard */; };
 		EE3F4F0E2509F7B100D1C26A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3F4F0D2509F7B100D1C26A /* Assets.xcassets */; };
 		EE3F4F112509F7B100D1C26A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE3F4F0F2509F7B100D1C26A /* LaunchScreen.storyboard */; };
+		EE3F4F1E250BD4BF00D1C26A /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F4F1C250BD4BE00D1C26A /* KeychainWrapper.swift */; };
+		EE3F4F1F250BD4BF00D1C26A /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3F4F1D250BD4BF00D1C26A /* KeychainItemAccessibility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		EE3F4F0D2509F7B100D1C26A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE3F4F102509F7B100D1C26A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE3F4F122509F7B100D1C26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE3F4F1C250BD4BE00D1C26A /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		EE3F4F1D250BD4BF00D1C26A /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				EE3F4F0D2509F7B100D1C26A /* Assets.xcassets */,
 				EE3F4F0F2509F7B100D1C26A /* LaunchScreen.storyboard */,
 				EE3F4F122509F7B100D1C26A /* Info.plist */,
+				EE3F4F1D250BD4BF00D1C26A /* KeychainItemAccessibility.swift */,
+				EE3F4F1C250BD4BE00D1C26A /* KeychainWrapper.swift */,
 			);
 			path = Authentication_testing;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				EE3F4F092509F7AC00D1C26A /* ViewController.swift in Sources */,
 				EE3F4F052509F7AC00D1C26A /* AppDelegate.swift in Sources */,
+				EE3F4F1E250BD4BF00D1C26A /* KeychainWrapper.swift in Sources */,
 				EE3F4F072509F7AC00D1C26A /* SceneDelegate.swift in Sources */,
+				EE3F4F1F250BD4BF00D1C26A /* KeychainItemAccessibility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

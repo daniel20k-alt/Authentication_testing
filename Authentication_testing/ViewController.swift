@@ -14,10 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "There is nothing here displayed"
-        
-        var hiddenUponLocking = true
-        
+        title = "Just a regular app that does nothing"
+
         func hideAway() {
             
         }
@@ -26,9 +24,11 @@ class ViewController: UIViewController {
         //when the keyboard shows or hides we should be notified
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveHiddenMessage), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     @IBAction func authenticateTapped(_ sender: Any) {
+        unlockHiddenMessage()
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
@@ -49,8 +49,20 @@ class ViewController: UIViewController {
         hiddenTextEditor.scrollRangeToVisible(selectedRange)
     }
     
-    func hideUponAuthentication() {
-        //write the func here
+    func unlockHiddenMessage() {
+        hiddenTextEditor.isHidden = false
+        title = "For your eyes only editor"
+        
+        hiddenTextEditor.text = KeychainWrapper.standard.string(forKey: "HiddenMessage") ?? ""
+    }
+    
+   @objc func saveHiddenMessage() {
+        guard hiddenTextEditor.isHidden == false else { return }
+        
+        KeychainWrapper.standard.set(hiddenTextEditor.text, forKey: "HiddenMessage")
+        hiddenTextEditor.resignFirstResponder()
+        hiddenTextEditor.isHidden = true
+        title = "There is nothing to see here"
     }
 }
 
