@@ -6,6 +6,7 @@
 //  Copyright © 2020 MeerkatWorks. All rights reserved.
 //
 
+import LocalAuthentication
 import UIKit
 
 class ViewController: UIViewController {
@@ -28,7 +29,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func authenticateTapped(_ sender: Any) {
-        unlockHiddenMessage()
+        let context = LAContext() //obj-c api
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Please identify yourself."
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] success, authenticationError in DispatchQueue.main.async {
+                    if success {
+                        self?.unlockHiddenMessage()
+                    } else {
+                        //the error here, if you can authenticate, but it wasn't successfull
+                        
+                        let ac = UIAlertController(title: "Authentication failed", message: "The verification was not possible, please try again", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self?.present(ac, animated: true)
+                    }
+                }
+            }
+        
+        } else {
+            //no biometry - the faceID or touchID wasn't configured
+            let ac = UIAlertController(title: "Biometry authentication not available", message: "The device is not configured for biometry  authentication", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
